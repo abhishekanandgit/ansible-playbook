@@ -1,0 +1,6 @@
+- name: 
+  hosts: server1
+  tasks:
+    - name: debug
+      debug:
+        msg: "the hostname is {{ansible_host}}"
