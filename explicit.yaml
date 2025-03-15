@@ -1,0 +1,7 @@
+- name:
+  hosts: server1
+  gather_facts: yes
+  tasks:  
+    - name:
+      debug:
+        msg: "the os version is {{ansible_distribution}}"
