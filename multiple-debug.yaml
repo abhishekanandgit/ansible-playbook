@@ -1,0 +1,9 @@
+- name:
+  hosts: server1
+  tasks:
+    - name: mul debug
+      debug:
+        msg: |
+          " the hostname is {{ansible_hostname}}"
+          " the ip is {{ansible_host}}"
+            
