@@ -1,0 +1,7 @@
+- name: 
+  hosts: server1
+  gather_facts: no  
+  tasks:
+    - name: Debug OS version
+      debug:
+        msg: "The OS version is {{ansible_become_pass}}"
