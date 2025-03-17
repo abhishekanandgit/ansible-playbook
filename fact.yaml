@@ -1,0 +1,9 @@
+- name:
+  hosts: server3
+  tasks:
+    - name: Check ansible distribution and os family
+      debug:
+        msg: |
+         - "ansible_distribution: {{ ansible_distribution }}"
+         - "ansible_os_family: {{ ansible_os_family }}"
+
