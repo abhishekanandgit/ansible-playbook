@@ -1,0 +1,26 @@
+- name: condition checking
+  hosts: server1
+  tasks:
+    - name: installing nginx
+      dnf:
+        name: nginx
+        state: present
+      when:
+        - ansible_distribution == 'AlmaLinux'
+        - ansible_os_family == 'RedHat'
+      tags:
+        - tag1
+        - tag11
+
+    - name: enable and start nginx
+      service:
+        name: nginx
+        enabled: yes
+        state: started
+      when:
+        - ansible_distribution == 'AlmaLinux'
+        - ansible_os_family == 'RedHat'
+      tags:
+        - tag1
+        - tag12
+
