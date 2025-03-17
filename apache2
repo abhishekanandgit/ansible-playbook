@@ -1,0 +1,19 @@
+- name: condition checking
+  hosts: server3
+  tasks:
+    - name: instal apache2
+      apt:
+        name: apache2
+        state: present
+      when:
+        - ansible_distribution == 'Ubuntu'
+        - ansible_os_family == 'Debian'
+
+    - name: enable and start httpd
+      service:
+        name: apache2
+        enabled: yes
+        state: started
+      when:
+        - ansible_distribution == 'Ubuntu'
+        - ansible_os_family == 'Debian'
