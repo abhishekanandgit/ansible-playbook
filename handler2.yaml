@@ -1,0 +1,27 @@
+---
+- name: Install and configure Apache HTTPD
+  hosts: server2
+  tasks:
+    - name: Install Apache HTTPD
+      dnf:
+        name: httpd
+        state: present
+
+    - name: Start and enable Apache HTTPD
+      service:
+        name: httpd
+        enabled: yes
+        state: started
+
+    - name: Apply Apache configuration
+      template:
+        src: httpd.conf.j2
+        dest: /etc/httpd/conf.d/httpd.conf
+      notify: Reload Apache
+
+  handlers:
+    - name: Reload Apache
+      service:
+        name: httpd
+        state: reloaded
+
