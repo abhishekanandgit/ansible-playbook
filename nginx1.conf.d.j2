@@ -1,0 +1,11 @@
+# Updated on {{ ansible_date_time.iso8601 }}
+server {
+    listen 80;
+    server_name {{ ansible_hostname }};
+    root /var/www/html;
+    index index.html;
+
+    error_log /var/log/nginx/error.log;
+    access_log /var/log/nginx/access.log;
+}
+
