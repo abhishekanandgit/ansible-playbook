@@ -1,0 +1,26 @@
+---
+- name: handlers
+  hosts: server1
+  tasks:
+    - name: Installation of Nginx
+      dnf:
+        name: nginx
+        state: present
+
+    - name: Enabling and starting Nginx
+      service:
+        name: nginx
+        enabled: yes
+        state: started
+
+    - name: Changing configuration of Nginx
+      template:
+        src: nginx1.conf.d.j2
+        dest: /etc/nginx/conf.d/nginx1.conf
+      notify: Reload Nginx
+
+  handlers:
+    - name: Reload Nginx
+      service:
+        name: nginx
+        state: reloaded
