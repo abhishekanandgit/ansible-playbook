@@ -4,18 +4,29 @@ all:
       ansible_user: abhi
       ansible_host: 172.16.150.72
       ansible_become: yes
-      ansible_become_method: sudo
+      ansible_become_methode: sudo
       ansible_become_pass: asd123.
     server2:
       ansible_user: abhi
       ansible_host: 172.16.150.241
       ansible_become: yes
-      ansible_become_method: sudo
+      ansible_become_methode: sudo
       ansible_become_pass: asd123.
     server3:
       ansible_user: abhishek
       ansible_host: 172.16.60.44
       ansible_become: yes
-      ansible_become_method: sudo
+      ansible_become_methode: sudo
       ansible_become_pass: asd123.
- 
+  children:
+    group1:
+      hosta:
+        server1:
+        server2:
+    group2:
+      hosts:
+        server3:
+    group3:     
+      children:
+        group1:
+        group2: 
