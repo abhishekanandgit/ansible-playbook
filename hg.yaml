@@ -1,0 +1,17 @@
+- name: hostvars and groupvars
+  hosts: server1
+  tasks:
+  - name: Installing package
+    ansible.builtin.dnf:
+      name: "{{web_package}}"
+      state: present
+  - name: Enabling and starting servicd
+    service:
+      name: "{{web_package}}"
+      enabled: yes
+      state: started
+  - name: copy files
+    ansible.builtin.copy:
+      src: index.html
+      dest: "{{web_path}}"
+        
